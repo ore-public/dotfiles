@@ -1,0 +1,62 @@
+autoload -U compinit
+compinit
+
+export LANG=ja_JP.UTF-8
+
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' formats '[%b]'
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () {
+  psvar=()
+  LANG=en_US.UTF-8 vcs_info
+  [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+  psvar[2]=`ruby -e "puts RUBY_VERSION+\"-p\"+(RUBY_PATCHLEVEL.to_s)"`
+}
+RPROMPT="%1(v|%F{green}%1v%f|) [%2v]"
+#RPROMPT="%1(v|%F{green}%1v%f|)"
+
+case ${UID} in
+0)
+    PROMPT="%B%{[31m%}%/#%{[m%}%b "
+    PROMPT2="%B%{[31m%}%_#%{[m%}%b "
+    SPROMPT="%B%{[31m%}%r is correct? [n,y,a,e]:%{[m%}%b "
+    [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
+        PROMPT="%{[37m%}${HOST%%.*} ${PROMPT}"
+    ;;
+*)
+    PROMPT="%{[31m%}%/%%%{[m%} "
+    PROMPT2="%{[31m%}%_%%%{[m%} "
+    SPROMPT="%{[31m%}%r is correct? [n,y,a,e]:%{[m%} "
+    [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
+        PROMPT="%{[37m%}${HOST%%.*} ${PROMPT}"
+    ;;
+esac
+
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+setopt hist_ignore_dups     # ignore duplication command history list
+setopt share_history        # share command history data
+setopt no_nomatch
+
+alias ls='ls -GF'
+alias la='ls -a'
+alias ll='ls -al'
+alias r='rails'
+alias be='bundle exec'
+alias bes='bundle exec spring'
+alias bi='bundle install'
+alias bu='bundle update'
+
+bindkey -e
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^P" history-beginning-search-backward-end
+bindkey "^N" history-beginning-search-forward-end
+
+export EDITOR=/usr/bin/vim
+
+PATH=/usr/local/bin:$PATH:$HOME/.rbenv/shims:$HOME/.rbenv/bin
+eval "$(rbenv init -)"
+
