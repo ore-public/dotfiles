@@ -57,6 +57,6 @@ bindkey "^N" history-beginning-search-forward-end
 
 export EDITOR=/usr/bin/vim
 
-PATH=/usr/local/bin:$PATH:$HOME/.rbenv/shims:$HOME/.rbenv/bin
+PATH=/usr/local/bin:$PATH:$HOME/.rbenv/shims:$HOME/.rbenv/bin:$HOME/bin
 eval "$(rbenv init -)"
 
