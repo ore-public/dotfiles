@@ -27,9 +27,11 @@ let g:unite_source_file_mru_limit = 200
 nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+"nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
 
+NeoBundle 'Shougo/neocomplcache'
+let g:neocomplcache_enable_at_startup = 1
 " 今後このあたりに追加のプラグインをどんどん書いて行きます！！"
 
 call neobundle#end()
@@ -64,6 +66,7 @@ set ruler
 set backspace=indent,eol,start
 set list
 set wildmode=longest
+set noswapfile
 
 map <left> :bp<CR>
 map <right> :bn<CR>
