@@ -34,7 +34,6 @@ NeoBundle 'Shougo/neocomplcache'
 let g:neocomplcache_enable_at_startup = 1
 
 " git
-NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'rhysd/committia.vim'
 let g:committia_hooks = {}
 function! g:committia_hooks.edit_open(info)
