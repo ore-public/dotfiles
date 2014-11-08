@@ -30,6 +30,14 @@ nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 "nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
 
+NeoBundle 'tpope/vim-rails'
+NeoBundle 'basyura/unite-rails'
+nnoremap <silent> ,urc :<C-u>Unite rails/controller<CR>
+nnoremap <silent> ,urm :<C-u>Unite rails/model<CR>
+nnoremap <silent> ,urv :<C-u>Unite rails/view<CR>
+nnoremap <silent> ,urs :<C-u>Unite rails/spec<CR>
+nnoremap <silent> ,urh :<C-u>Unite rails/helper<CR>
+
 NeoBundle 'Shougo/neocomplcache'
 let g:neocomplcache_enable_at_startup = 1
 
