@@ -60,3 +60,5 @@ export EDITOR=/usr/bin/vim
 PATH=/usr/local/bin:$PATH:$HOME/.rbenv/shims:$HOME/.rbenv/bin:$HOME/bin
 eval "$(rbenv init -)"
 
+umask 0002
+
